@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   
   
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/new'
-  get 'orders/log'
-  get 'orders/thanks'
+  namespace :public do
+    get 'orders/index'
+    get 'orders/show'
+    get 'orders/new'
+    get 'orders/log'
+    get 'orders/thanks'
+  end
   devise_for :users
   
   resources :orders, only: []

@@ -1,4 +1,5 @@
-class OrdersController < ApplicationController
+class Public::OrdersController < ApplicationController
+  
   def index
   end
 
@@ -13,4 +14,7 @@ class OrdersController < ApplicationController
 
   def thanks
   end
+  
+  
+  
 end

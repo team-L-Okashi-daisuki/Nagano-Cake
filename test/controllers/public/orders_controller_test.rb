@@ -1,28 +1,28 @@
 require "test_helper"
 
-class OrdersControllerTest < ActionDispatch::IntegrationTest
+class Public::OrdersControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get orders_index_url
+    get public_orders_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get orders_show_url
+    get public_orders_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get orders_new_url
+    get public_orders_new_url
     assert_response :success
   end
 
   test "should get log" do
-    get orders_log_url
+    get public_orders_log_url
     assert_response :success
   end
 
   test "should get thanks" do
-    get orders_thanks_url
+    get public_orders_thanks_url
     assert_response :success
   end
 end
