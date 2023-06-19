@@ -1,9 +1,5 @@
 class Public::OrdersController < ApplicationController
-  
   def new
-  end
-  
-  def create
   end
 
   def index
@@ -17,7 +13,4 @@ class Public::OrdersController < ApplicationController
 
   def thanks
   end
-  
-  
-  
 end
