@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
   
-  
-  namespace :public do
-   
-    get 'orders/log'
-    get 'orders/thanks'
-  end
   devise_for :users
   
   resources :orders, only: [:new, :create, :index, :show] do
-    post "log" => "orders#log"
+    post "confirm" => "orders#confirm"
     get "thanks" => "orders#thanks"
   end
   
