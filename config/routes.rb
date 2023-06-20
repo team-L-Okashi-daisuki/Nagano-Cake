@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  scope module: 'public' do
+    get 'customers/show'
+    get 'customers/information/edit' => "customers#edit"
+    get 'customers/unsubscribe'
+  end
   devise_for :customers
   root to: 'homes#top'
   get 'homes/about' => "homes#about"
