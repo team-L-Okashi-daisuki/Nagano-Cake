@@ -1,1 +1,32 @@
-<h4>注文情報入力</h4>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="mx-4 ml-5">注文情報入力</h4>
+      
+      <h5 class="my-2"><strong>支払い方法</strong></h5>
+      
+        <label class="mx-0 ml-4">
+          <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+          <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+        </label><br>
+        
+        <label class="mx-0 ml-4">
+          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+        </label>
+      
+      <h5 class="my-2"><strong>お届け先</strong></h5>
+      
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
+  
+  
+  
+
+</div>
