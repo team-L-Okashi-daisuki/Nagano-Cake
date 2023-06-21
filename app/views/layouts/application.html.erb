@@ -17,7 +17,7 @@
         <h1>LOGO</h1>
         <% if customer_signed_in? %>
           <li>
-            <i>マイページ</i>
+            <%= link_to "マイページ", customers_show_path %>
           </li>
           <li>
             <i>商品一覧</i>
@@ -30,13 +30,13 @@
           </li>
         <% else %>
           <li>
-            <i>About</i>
+            <%= link_to "About", homes_about_path %>
           </li>
           <li>
             <i>商品一覧</i>
           </li>
           <li>
-            <i>新規登録</i>
+            <%= link_to "新規登録", new_customer_registration_path %>
           </li>
           <li>
             <%= link_to "ログイン", new_customer_session_path %>

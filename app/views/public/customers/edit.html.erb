@@ -1,2 +1,38 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h4>　会員情報編集　</h4>
+    <div class="col-md-10">
+      <%= form_with model: @customer, url: customers_show_path(@customer) do |f| %>
+        <div class="form-group col-md-12">
+          <%= f.label :"氏名　　　　　" %>
+          <%= f.text_field :last_name %>
+          <%= f.text_field :first_name %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.label :"フリガナ　　　" %>
+          <%= f.text_field :last_name_kana %>
+          <%= f.text_field :first_name_kana %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.label :"郵便番号　　　" %>
+          <%= f.text_field :zip_code %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.label :"住所　　　　　" %>
+          <%= f.text_field :address %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.label :"電話番号　　　" %>
+          <%= f.text_field :phone_number %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.label :"メールアドレス" %>
+          <%= f.email_field :email %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.submit "編集内容を保存する", class: "btn btn-primary save" %>
+          <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
