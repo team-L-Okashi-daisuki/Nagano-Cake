@@ -5,12 +5,45 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <script src="https://kit.fontawesome.com/dd78c21fb3.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <ul class="navbar-nav ml-auto">
+        <h1>LOGO</h1>
+        <% if customer_signed_in? %>
+          <li>
+            <i>マイページ</i>
+          </li>
+          <li>
+            <i>商品一覧</i>
+          </li>
+          <li>
+            <i>カート</i>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <i>About</i>
+          </li>
+          <li>
+            <i>商品一覧</i>
+          </li>
+          <li>
+            <i>新規登録</i>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
     <%= yield %>
   </body>
 </html>
