@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :customers
+  namespace :admin do
+    get 'orders/show'
+  end
+
   root to: 'homes#top'
   get 'homes/about' => "homes#about"
   devise_for :users
