@@ -54,7 +54,7 @@ module.exports = function(api) {
         }
       ],
       [
-        '@babel/plugin-transform-proposal-private-methods',
+
         {
           loose: true
         }
