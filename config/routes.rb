@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'orders/show'
-  end
+
   root to: 'homes#top'
   get 'homes/about' => "homes#about"
 
