@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'customers/information/edit' => "customers#edit"
     get 'customers/unsubscribe'
     resources :customers, only: [:update]
+    patch 'customers/withdraw' => "customers#withdraw"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
