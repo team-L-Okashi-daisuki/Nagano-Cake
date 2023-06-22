@@ -4,12 +4,8 @@ class Order < ApplicationRecord
   
   has_many :order_details, dependent: :destroy
   
-  validates :customer_id, presence: :true
-  validates :ship_name, presence: :true
-  validates :ship_address, presence: :true
-  validates :ship_zip_code, presence: :true
-  validates :postage, presence: :true
-  validates :bill, presence: :true
+  #enum設定
+  enum payment_method: { credit_card: 0, transfer: 1 }
   
   def address_display
   '〒' + ship_zip_code + ' ' + ship_address + ' ' + ship_name
