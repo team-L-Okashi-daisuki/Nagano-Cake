@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>商品一覧</h3><h4>(全<%= @items.count %>件)</h4>
+    </div>
+  </div>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col">
+        <div class="card">
+          <%= link_to item_path(item) do %>
+            <p><%= image_tag item %></p>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <%= products.name %>
+          <% if products.is_active == true %>
+            <p><%= products.price %>円(税抜)</p>
+          <% else %>
+            <p>売切れ</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

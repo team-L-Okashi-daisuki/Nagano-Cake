@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= attachment_image_tag @item, :product_image, width: "60%", format: "jpeg", fallback: "no_image.jpg" %>
+    </div>
+    <div class="col">
+      <h3><strong><%= @item.name %></strong></h3>
+      <%= @item.description %>
+      <% if @item.is_active == true %>
+        <h4>¥ <%= @item.price %> （税込）</h4>
+        
+      <% else %>
+        <h4>販売停止中です</h4>
+    </div>
+  </div>
+</div>
