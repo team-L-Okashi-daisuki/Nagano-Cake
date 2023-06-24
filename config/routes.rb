@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
-}
-namespace :admin do
+  }
+
+  namespace :admin do
     get 'genres/index'
     get 'genres/edit'
     get 'orders/show'
@@ -23,6 +24,9 @@ namespace :admin do
     get 'customers/unsubscribe'
     patch 'customers/withdraw' => "customers#withdraw"
     resources :customers, only: [:update]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:idex, :update, :destroy, :create]
+
   end
 
   scope module: 'public' do
