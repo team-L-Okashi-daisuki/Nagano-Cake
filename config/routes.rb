@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'cart_items/index'
+  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+  }
+
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+    get 'orders/show'
   end
+
   root to: 'homes#top'
   get 'homes/about' => "homes#about"
 
@@ -19,7 +26,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:idex, :update, :destroy, :create]
-    
+
   end
 
   scope module: 'public' do
