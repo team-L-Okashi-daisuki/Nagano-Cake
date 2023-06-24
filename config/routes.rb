@@ -1,16 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-  }
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-    
-    get 'orders/show'
-  end
-
   root to: 'homes#top'
   get 'homes/about' => "homes#about"
 
