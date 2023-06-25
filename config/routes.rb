@@ -12,6 +12,9 @@ namespace :admin do
     resources :items, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
     get "/search" => "items#search"
+  }
+
+
   end
 
   root to: 'homes#top'
@@ -28,6 +31,9 @@ namespace :admin do
     get 'customers/unsubscribe'
     patch 'customers/withdraw' => "customers#withdraw"
     resources :customers, only: [:update]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:idex, :update, :destroy, :create]
+
   end
 
   scope module: 'public' do
