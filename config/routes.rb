@@ -28,7 +28,9 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => "customers#withdraw"
     resources :customers, only: [:update]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:idex, :update, :destroy, :create]
+    delete "/cart_items/destroy_all" => "cart_items#all_destroy"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+
   end
 
   scope module: 'public' do

@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-
   create_table "active_storage_blobs", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,7 +52,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "product_id", null: false
@@ -62,7 +59,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -113,7 +109,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
   create_table "shippings", force: :cascade do |t|
     t.integer "custmer_id", null: false
     t.string "name", null: false
@@ -122,7 +117,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
