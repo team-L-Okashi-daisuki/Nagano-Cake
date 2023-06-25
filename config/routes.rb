@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   #devise_for :admins
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
-}
-namespace :admin do
+  }
+  devise_for :customers, skip: [:passwords],  controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  namespace :admin do
     resources :orders, only: [:show, :update]
     get "/" => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
@@ -12,20 +17,11 @@ namespace :admin do
     resources :items, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
     get "/search" => "items#search"
-  }
-
-
   end
 
-  root to: 'homes#top'
-  get 'homes/about' => "homes#about"
-
-  devise_for :customers, skip: [:passwords],  controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
-
   scope module: 'public' do
+    root "homes#top"
+    get 'homes/about' => "homes#about"
     get 'customers/show'
     get 'customers/information/edit' => "customers#edit"
     get 'customers/unsubscribe'
@@ -33,7 +29,6 @@ namespace :admin do
     resources :customers, only: [:update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:idex, :update, :destroy, :create]
-
   end
 
   scope module: 'public' do
