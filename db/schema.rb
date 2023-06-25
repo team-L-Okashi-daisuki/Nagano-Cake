@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -110,8 +109,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
-
   create_table "shippings", force: :cascade do |t|
     t.integer "custmer_id", null: false
     t.string "name", null: false
@@ -120,8 +117,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
