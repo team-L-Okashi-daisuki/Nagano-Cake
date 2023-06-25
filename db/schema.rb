@@ -12,9 +12,6 @@
 
 
 
-ActiveRecord::Schema.define(version: 2023_06_24_083948) do
-
-
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,6 +23,7 @@ ActiveRecord::Schema.define(version: 2023_06_24_083948) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
+
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -67,6 +65,24 @@ ActiveRecord::Schema.define(version: 2023_06_24_083948) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shippings", force: :cascade do |t|
+    t.integer "custmer_id", null: false
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "zip_code", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -80,5 +96,6 @@ ActiveRecord::Schema.define(version: 2023_06_24_083948) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end
