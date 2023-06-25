@@ -12,9 +12,6 @@ namespace :admin do
     resources :items, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
     get "/search" => "items#search"
-  }
-
-
   end
 
   root to: 'homes#top'
