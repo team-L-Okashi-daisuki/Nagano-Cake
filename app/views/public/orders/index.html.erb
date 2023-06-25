@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="mx-4 ml-5">注文履歴一覧</h4>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" style="width:10%;">注文日</th>
+            <th scope="col" style="width:30%;">配送先</th>
+            <th scope="col" style="width:30%;">注文商品</th>
+            <th scope="col" style="width:10%;">支払い金額</th>
+            <th scope="col" style="width:10%;">ステータス</th>
+            <th scope="col" style="width:20%;">注文詳細</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td class="align-middle">
+                <%= "〒#{order.ship_zip_code}" %><br>
+                <%= order.ship_address %><br>
+                <%= order.ship_name %>
+              </td>
+              <td class="align-middle" style="word-break:break-all">
+                <% order.order_details.each do |order_detail| %>
+                  <%= link_to order_detail.item.name,item_path(order_detail.item) %><br>
+                <% end %>
+              </td>
+              <td class="align-middle"><%= "#{order.total_payment}円" %></td>
+              <td class="align-middle"><%= order.order_status %></td>
+              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-primary"  %></td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+</div>
