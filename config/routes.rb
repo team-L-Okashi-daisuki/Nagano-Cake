@@ -12,7 +12,7 @@ namespace :admin do
     resources :items, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
     get "/search" => "items#search"
-  }
+
 
 
   end
@@ -23,6 +23,7 @@ namespace :admin do
   devise_for :customers, skip: [:passwords],  controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
+
   }
 
   scope module: 'public' do
