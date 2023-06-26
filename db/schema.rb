@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_25_033401) do
+ActiveRecord::Schema.define(version: 2023_06_24_074452) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
-
 
   create_table "active_storage_blobs", force: :cascade do |t|
     t.string "key", null: false
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,7 +52,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "product_id", null: false
@@ -63,13 +60,13 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+
     t.string "last_name", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name_kana", default: "", null: false
@@ -77,7 +74,7 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.string "zip_code", default: "", null: false
     t.string "address", default: "", null: false
     t.string "phone_number", default: "", null: false
-    t.boolean "is_active", default: true, null: false
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -113,7 +110,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-
   create_table "shippings", force: :cascade do |t|
     t.integer "custmer_id", null: false
     t.string "name", null: false
@@ -122,7 +118,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
