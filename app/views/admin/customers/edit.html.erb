@@ -1,5 +1,5 @@
 <h2><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h2>
-<%= form_with model: @customer, local:true do |f| %>
+<%= form_with model: @customer, url:admin_customer_path, local:true do |f| %>
   <table class="table table-bordered">
     <tr>
       <th>会員ID</th>
@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th>メールアドレス</th>
-      <td><%= f.email_field :email :phone_number %></td>
+      <td><%= f.email_field :email %></td>
     </tr>
     <tr>
       <th>会員ステータス</th>

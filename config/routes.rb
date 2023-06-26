@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   #devise_for :admins
+
+namespace :admin do
+  
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -8,15 +11,18 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  namespace :admin do
+  
     resources :orders, only: [:show, :update]
     get "/" => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :create, :new, :show, :edit, :update]
+    resources :products, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
-    get "/search" => "items#search"
+
+    get "/search" => "products#search"
+
+
+
   end
 
   scope module: 'public' do
