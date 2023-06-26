@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   #devise_for :admins
 
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -42,6 +43,10 @@ Rails.application.routes.draw do
       post "confirm" => "orders#confirm"
       get "thanks" => "orders#thanks"
     end
+  end
+
+  scope module: 'public' do
+     resources :shippings, only: [:index, :create, :destroy, :edit, :update]
   end
 
   scope module: 'public' do
