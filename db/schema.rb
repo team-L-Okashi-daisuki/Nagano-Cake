@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2023_06_25_033401) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -74,9 +73,7 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.string "zip_code", default: "", null: false
     t.string "address", default: "", null: false
     t.string "phone_number", default: "", null: false
-
-    t.boolean "is_active", default: true, null: false
-
+    t.boolean "is_active", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -111,7 +108,6 @@ ActiveRecord::Schema.define(version: 2023_06_25_033401) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 
   create_table "shippings", force: :cascade do |t|
     t.integer "custmer_id", null: false
