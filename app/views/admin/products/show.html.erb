@@ -1,0 +1,12 @@
+<div class="col-xs-12 col-sm-6 col-md-6 mx-auto text-right">
+  <%= attachment_image_tag @product, :product_image, width: "60%", format: "jpeg", fallback: "no_image.jpeg", class:"lb" %>
+</div>
+<h2><strong><%= @product.name %></strong></h2>
+<h4><%= simple_format(@product.description)%></h4>
+<%  if @product.is_active == true %>
+  <p>販売中</p>
+  <h3>¥ <%= change_price( @product.price) %> (税込)</h3>
+<% else %>
+  <h3>販売停止中</h3>
+<% end %>
+<%= link_to "編集する", edit_admin_product_path, class:"btn btn-success" %>

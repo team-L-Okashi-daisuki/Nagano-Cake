@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   #devise_for :admins
+
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -8,15 +10,18 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
   namespace :admin do
     resources :orders, only: [:show, :update]
     get "/" => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :create, :new, :show, :edit, :update]
+    resources :products, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
-    get "/search" => "items#search"
+
+    get "/search" => "products#search"
+
+
+
   end
 
   scope module: 'public' do
@@ -28,7 +33,9 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => "customers#withdraw"
     resources :customers, only: [:update]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:idex, :update, :destroy, :create]
+    delete "/cart_items/destroy_all" => "cart_items#all_destroy"
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+
   end
 
   scope module: 'public' do
@@ -37,7 +44,11 @@ Rails.application.routes.draw do
       get "thanks" => "orders#thanks"
     end
   end
-  
+
+  scope module: 'public' do
+     resources :shippings, only: [:index, :create, :destroy, :edit, :update]
+  end
+
   scope module: 'public' do
      resources :shippings, only: [:index, :create, :destroy, :edit, :update]
   end

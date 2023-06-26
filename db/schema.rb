@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2023_06_24_074452) do
     t.string "address", default: "", null: false
     t.string "phone_number", default: "", null: false
 
+
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
