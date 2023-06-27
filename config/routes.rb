@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
   #devise_for :admins
-
-
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -10,6 +8,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+
   namespace :admin do
     resources :orders, only: [:show, :update]
     get "/" => "homes#top"
@@ -17,11 +16,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :products, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
-
-    get "/search" => "products#search"
-
-
-
+    get "/search" => "items#search"
   end
 
   scope module: 'public' do
@@ -43,10 +38,6 @@ Rails.application.routes.draw do
       post "confirm" => "orders#confirm"
       get "thanks" => "orders#thanks"
     end
-  end
-
-  scope module: 'public' do
-     resources :shippings, only: [:index, :create, :destroy, :edit, :update]
   end
 
   scope module: 'public' do

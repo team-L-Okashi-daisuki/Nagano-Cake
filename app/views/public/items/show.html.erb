@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col">
       <% if @item.product_image.attached? %>
-        <%= image_tag @item.product_image, size: "200x200" %>
+        <%= image_tag @item.product_image, width: "60%" %>
       <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
+        <%= image_tag 'no_image.jpg', style: "width: 60%" %>
       <% end %>
     </div>
     <div class="col">
@@ -14,7 +14,7 @@
         <h4>¥ <%= (@item.price * 1.1).floor %>（税込）</h4>
         <%= form_with model: @cart_item, local:true do |f| %>
           <%= f.hidden_field :product_id, :value => @item.id %>
-          <%= f.select :quantity, *[1..99]  %>
+          <%= f.select :quantity, *[1..10]  %>
           <%= f.submit "カートに入れる", class: "btn btn-success" %>
         <% end %>
       <% else %>
