@@ -8,8 +8,8 @@ class Order < ApplicationRecord
 
 
   #enum設定
-  enum payment_method: { credit_card: 0, transfer: 1 }
-  enum order_status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4}
+  enum payment_method: { クレジットカード: 0, 銀行振込: 1 }
+  enum status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4}
 
   def address_display
   '〒' + ship_zip_code + ' ' + ship_address + ' ' + ship_name
@@ -20,7 +20,7 @@ class Order < ApplicationRecord
     self.postage = 800
     self.bill = 1
   end
-  
+
   def order_in_zipcode_address_name(zipcode, address, name)
     self.ship_zip_code = zipcode
     self.ship_address = address
