@@ -6,10 +6,10 @@ class Public::OrdersController < ApplicationController
      cart_items = current_customer.cart_items
     if cart_items.present?
       @order = Order.new
-      @shipping = Shipping.all
+      @shippings = current_customer.shippings
     else
       flash[:notice] = "カートが空です"
-      redirect_to request.referer
+      redirect_to root_url
     end
   end
 
@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
     @order.temporary_information_input(customer.id)
 
     if address_option == 0
-      @order.order_in_postcode_address_name(customer.zip_code, customer.address, customer.last_name)
+      @order.order_in_zipcode_address_name(customer.zip_code, customer.address, customer.last_name)
     elsif address_option == 1
       shipping = Shipping.find(params[:order][:address])
       @order.order_in_postcode_address_name(shipping.ship_zip_code, shipping.ship_address, shipping.ship_name)
@@ -49,16 +49,16 @@ class Public::OrdersController < ApplicationController
       @cart_items = CartItem.where(customer_id: current_customer.id)
       @cart_items.each do |cart_item|
         order_detail = OrderDetail.new
-        order_detail.item_id = cart_item.item_id
+        order_detail.product_id = cart_item.product_id
         order_detail.order_id = @order.id
-        order_detail.amount = cart_item.amount
-        order_detail.price_including_tax = change_price_excluding_tax(cart_item.item.price_excluding_tax)
-        order_detail.production_status = 0
+        order_detail.quantity = cart_item.quantity
+        order_detail.price = cart_item.product.with_tax_price
+        order_detail.status = 0
         if order_detail.save
           @cart_items.destroy_all
         end
       end
-      redirect_to orders_thanks_path
+      redirect_to thanks_orders_path
     else
 
     end
