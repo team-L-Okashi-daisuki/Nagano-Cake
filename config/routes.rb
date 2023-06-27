@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "/" => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :create, :new, :show, :edit, :update]
+    resources :products, only: [:index, :create, :new, :show, :edit, :update]
     resources :order_details, only: [:update]
     get "/search" => "items#search"
   end
