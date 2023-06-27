@@ -9,7 +9,7 @@ class Public::OrdersController < ApplicationController
       @shipping = Shipping.all
     else
       flash[:notice] = "カートが空です"
-      redirect_to request.referer
+      redirect_to root_url
     end
   end
 
