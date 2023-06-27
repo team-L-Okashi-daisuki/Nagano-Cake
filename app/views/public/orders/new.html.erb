@@ -3,16 +3,16 @@
     <div class="col">
       <h4 class="mx-4 ml-5">注文情報入力</h4>
 
-      <%= form_with model: @order, url: confirm_orders_path, data: { turbolinks: false } ,method: :post do |f| %>
+      <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
 
       <h5 class="my-2"><strong>支払い方法</strong></h5>
 
         <label class="mx-0 ml-4">
-          <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-          <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
+          <%= f.radio_button :payment_method, "credit_card" %>
+          <%= f.label :payment_method_credit_card, "クレジットカード" %><br>
 
-          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-          <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+          <%= f.radio_button :payment_method, "transfer" %>
+          <%= f.label :payment_method_transfer, "銀行振込" %>
         </label>
 
       <h5 class="my-2"><strong>お届け先</strong></h5>
@@ -23,7 +23,7 @@
         </label>
 
         <label class="mx-0 ml-6">
-          〒<%= current_customer.ship_zip_code %><%= current_customer.address %><br>
+          〒<%= current_customer.zip_code %><%= current_customer.address %><br>
           <%= current_customer.last_name %><%= current_customer.first_name %>
         </label>
 
@@ -33,7 +33,7 @@
         </label>
 
         <label class="mx-0 ml-6">
-          <%= f.select :address_id, options_from_collection_for_select(Shipping.all, :id, :address_display) %>
+          <%= f.collection_select(:registration_shipping, @shippings, :id, :zip_code_and_address_and_name, {}, {class: "form-control"}) %>
         </label>
 
         <label class="mx-0 ml-4">

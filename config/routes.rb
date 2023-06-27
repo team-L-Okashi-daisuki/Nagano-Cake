@@ -35,8 +35,8 @@ Rails.application.routes.draw do
 
   scope module: 'public' do
     resources :orders, only: [:new, :create, :index, :show] do
-      post "confirm" => "orders#confirm"
-      get "thanks" => "orders#thanks"
+      post 'confirm', on: :collection
+      get 'thanks', to: 'orders#thanks', on: :collection
     end
   end
 
