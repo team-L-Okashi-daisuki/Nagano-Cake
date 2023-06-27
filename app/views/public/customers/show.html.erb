@@ -33,9 +33,15 @@
     </table>
   </div>
   <div class="row">
-    <p>配送先 <div class="btn">一覧を見る</div></p>
+    <div class="coll"><h4>配送先</h4></div>
+    <div class="coll">
+      <%= link_to "一覧を見る", shippings_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="row">
-    <p>注文履歴 <div class="btn">一覧を見る</div></p>
+    <div class="col"><h4>注文履歴</h4></div>
+    <div class="col">
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
