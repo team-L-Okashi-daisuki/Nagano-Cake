@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= image_tag @item.product_image, width: "60%", format: "jpeg", fallback: "no_image.jpg" %>
+      <% if @item.product_image.attached? %>
+        <%= image_tag @item.product_image, width: "60%" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', style: "width: 60%" %>
+      <% end %>
     </div>
     <div class="col">
       <h3><strong><%= @item.name %></strong></h3>
