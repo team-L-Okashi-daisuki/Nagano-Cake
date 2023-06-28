@@ -37,14 +37,14 @@
         <tbody>
           <% @order.order_details.each do |order_detail| %>
           <tr>
-            <td class="align-middle"><%= order_detail.product_name %></td>
+            <td class="align-middle"><%= order_detail.product.name %></td>
             <td class="align-middle"><%= order_detail.price %></td>
             <td class="align-middle"><%= order_detail.quantity %></td>
             <td class="align-middle"><%= order_detail.price * order_detail.quantity%>円</td>
             <td class="align-middle">
               <%= form_with model: order_detail, url: admin_order_detail_path, method: :patch, local: true do |f| %>
                 <%= f.hidden_field :order_detail_id, :value => order_detail.id %>
-                <%= f.select :status, OrderDetail.status.keys %>
+                <%= f.select :status, OrderDetail.statuses.keys %>
                 <%= f.submit "更新", class: "btn btn-success" %>
               <% end %>
             </td>
