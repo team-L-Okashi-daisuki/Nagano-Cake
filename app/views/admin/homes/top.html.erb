@@ -21,11 +21,11 @@
               </td>
               <td><%= order.customer.last_name+order.customer.first_name %></td>
               <td>
-                <% @total_amount = 0 %>
-                  <% order.order_details.each do |order_detail| %>
-                    <% @total_amount += order_detail.amount %>
-                  <% end %>
-                <%= @total_amount %>
+               <% total_quantity = 0 %>
+               <% order.order_details.each do |order_detail| %>
+                 <% total_quantity += order_detail.quantity %>
+               <% end %>
+               <p><%= total_quantity %></p>
               </td>
               <td><%= order.status %></td>
             </tr>
