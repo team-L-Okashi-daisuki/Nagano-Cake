@@ -17,29 +17,31 @@
 
       <h5 class="my-2"><strong>お届け先</strong></h5>
 
-        <label class="mb-3 px-3">
+        <div class="mb-3 px-3">
           <%= f.radio_button :select_address, 0 %>
           <%= f.label :address_number_0, "ご自身の住所" %>
-        </label>
-
-        <label class="mx-0 ml-6">
-          〒<%= current_customer.zip_code %><%= current_customer.address %><br>
-          <%= current_customer.last_name %><%= current_customer.first_name %>
-        </label>
-
-        <div class="mb-3 px-3">
-          <%= f.radio_button :select_address, 1 %>
-          <%= f.label :address_number_1, "登録済み住所から選択" %>
         </div>
 
-        <label class="mx-0 ml-6">
+        <div class="mb-3 px-4">
+          〒<%= current_customer.zip_code %><%= current_customer.address %><br>
+          <%= current_customer.last_name %><%= current_customer.first_name %>
+        </div>
+
+      <div>
+        <label class="mb-3 px-3">
+          <%= f.radio_button :select_address, 1 %>
+          <%= f.label :address_number_1, "登録済み住所から選択" %>
+        </label>
+      </div>
+
+        <label class="mt-1 mb-3 px-4">
           <%= f.collection_select(:registration_shipping, @shippings, :id, :zip_code_and_address_and_name, {}, {class: "form-control"}) %>
         </label>
 
-        <label class="mb-3 px-3">
+        <div class="mb-3 px-3">
           <%= f.radio_button :select_address, 2 %>
           <%= f.label :address_number_2, "新しいお届け先" %>
-        </label>
+        </div>
 
         <div class="form-group row mb-2 mt-2 px-4">
           <div class="col-md-5">
@@ -70,7 +72,7 @@
 
     </div>
   </div>
-  <div class="text-center mt-4">
+  <div class="text-center mt-4 mb-3">
     <%= f.submit "確認画面へ進む", class: "btn", style: "background-color: #1A120B; color: #E5E5CB;" %>
 
   </div>
