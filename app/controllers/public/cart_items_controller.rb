@@ -33,7 +33,6 @@ class Public::CartItemsController < ApplicationController
       @cart_item.customer_id = current_customer.id
       @cart_item.save
     end
-    redirect_to cart_items_path
   end
 
 
