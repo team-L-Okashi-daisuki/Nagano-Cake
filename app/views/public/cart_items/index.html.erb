@@ -1,6 +1,6 @@
 <div class ="container">
   <div class="row">
-    <div class="col bg-light">
+    <div class="col-md-4 bg-light">
       <h2>　ショッピングカート　</h2>
     </div>
     <% unless @cart_items.empty? %>
@@ -17,7 +17,7 @@
   <% else %>
     <div class="row">
       <div class="col">
-        <tabel>
+        <table class="table">
           <thead>
             <tr>
               <th>商品名</th>
@@ -31,9 +31,9 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <% if cart_item.product.product_image.attached? %>
-                  <td><%= image_tag cart_item.product.product_image, size: "20x20" %><%= cart_item.product.name %></td>
+                  <td><%= image_tag cart_item.product.product_image, size: "70x70" %><%= cart_item.product.name %></td>
                 <% else %>
-                  <td><%= image_tag 'no_image.jpg', size: "20x20" %></td>
+                  <td><%= image_tag 'no_image.jpg', size: "70x70" %><%= cart_item.product.name %></td>
                 <% end %>
                 <td><%= cart_item.product.with_tax_price %></td>
                 <td>
