@@ -25,8 +25,8 @@
                 <%= order.ship_name %>
               </td>
               <td class="align-middle" style="word-break:break-all">
-                <% order.order_details.each do |order_detail| %>
-                  <%= link_to order_detail.product.name,product_path(order_detail.product) %><br>
+                <% order.products.each do |product| %>
+                  <%=  product.name %><br>
                 <% end %>
               </td>
               <td class="align-middle"><%= "#{order.bill}円" %></td>
