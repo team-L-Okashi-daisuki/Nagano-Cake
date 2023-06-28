@@ -19,9 +19,9 @@
             <tr>
               <td class="align-middle" style="word-break:break-all">
                 <% if cart_item.product.product_image.attached? %>
-                  <td><%= image_tag cart_item.product.product_image, size: "20x20" %><%= cart_item.product.name %></td>
+                  <%= image_tag cart_item.product.product_image, size: "20x20" %><%= cart_item.product.name %>
                 <% else %>
-                  <td><%= image_tag 'no_image.jpg', size: "20x20" %></td>
+                  <%= image_tag 'no_image.jpg', size: "20x20" %><%= cart_item.product.name %>
                 <% end %>
               </td>
 
