@@ -7,7 +7,7 @@
   <div class="row">
     <% @items.each do |item| %>
       <div class="col">
-        <div class="card">
+        <div class="card-borderless">
           <%= link_to item_path(item) do %>
             <% if item.product_image.attached? %>
               <%= image_tag item.product_image, size: "200x200" %>
@@ -29,7 +29,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= paginate @items, class: "center-block" %> 
+      <%= paginate @items, class: "center-block" %>
     </div>
   </div>
 </div>
