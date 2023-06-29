@@ -19,9 +19,9 @@
             <tr>
               <td class="align-middle" style="word-break:break-all">
                 <% if cart_item.product.product_image.attached? %>
-                  <%= image_tag cart_item.product.product_image, size: "20x20" %><%= cart_item.product.name %>
+                  <%= image_tag cart_item.product.product_image, size: "70x70" %><%= cart_item.product.name %>
                 <% else %>
-                  <%= image_tag 'no_image.jpg', size: "20x20" %><%= cart_item.product.name %>
+                  <%= image_tag 'no_image.jpg', size: "70x70" %><%= cart_item.product.name %>
                 <% end %>
               </td>
 
@@ -45,6 +45,7 @@
     </div>
 
     <div class="col-sm-3">
+      <h4>　</h4>
       <table class="table table-bordered">
         <tr><th class="table-active" style="width:50%">送料</th><td>800</td></tr>
         <tr><th class="table-active" style="width:50%">商品合計</th><td><%= @total_amount.to_s(:delimited) %></td></tr>
