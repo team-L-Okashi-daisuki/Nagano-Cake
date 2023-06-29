@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>商品一覧</h3><h4>(全<%= @items_all.count %>件)</h4>
+    </div>
+  </div>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col">
+        <div class="card-borderless">
+          <%= link_to item_path(item) do %>
+            <% if item.product_image.attached? %>
+              <%= image_tag item.product_image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <%= item.name %>
+          <% if item.is_active == true %>
+            <p><%= item.price %>円(税抜)</p>
+          <% else %>
+            <p>売切れ</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= paginate @items, class: "center-block" %>
+    </div>
+  </div>
+</div>
+
